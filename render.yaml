@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: women-safety-sos
+    runtime: node
+    plan: free
+    buildCommand: cd frontend && npm install && npm run build
+    startCommand: cd backend && npm install && node server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DB_HOST
+        sync: false
+      - key: DB_USER
+        sync: false
+      - key: DB_PASS
+        sync: false
+      - key: DB_NAME
+        value: women_safety
+      - key: JWT_SECRET
+        generateValue: true
