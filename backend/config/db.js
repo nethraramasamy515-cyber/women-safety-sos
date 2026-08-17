@@ -10,7 +10,7 @@ if (dbUrl) {
     dialect: 'mysql',
     logging: false,
     dialectOptions: {
-      ssl: { rejectUnauthorized: true },
+      ssl: false,
     },
     pool: { max: 10, min: 0, acquire: 30000, idle: 10000 },
   });
