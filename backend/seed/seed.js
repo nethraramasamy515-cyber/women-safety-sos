@@ -30,11 +30,14 @@ const seedDatabase = async () => {
     }
 
     console.log('Database seeding complete');
-    process.exit(0);
   } catch (error) {
     console.error('Seeding error:', error);
-    process.exit(1);
+    throw error;
   }
 };
 
-seedDatabase();
+if (require.main === module) {
+  seedDatabase();
+}
+
+module.exports = { policeStations, seedDatabase };

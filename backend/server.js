@@ -44,6 +44,9 @@ const startServer = async () => {
     await sequelize.sync({ alter: true });
     console.log('Models synchronized with database');
 
+    const { seedDatabase } = require('./seed/seed');
+    await seedDatabase().catch((e) => console.warn('Auto-seed skipped:', e.message));
+
     app.listen(PORT, () => {
       console.log(`Server running on port ${PORT}`);
     });
